@@ -3,13 +3,13 @@ AndroidManifest.xml 中aty下配置 android:launchMode属性
 或者
 (通过addFlags()的方式来设置启动模式有局限性，只能显示的设置“singleTask”和“singleTop”两种启动模式，而并没有对应“standard”和“singleInstance”启动模式的标识)
 FLAG_ACTIVITY_NEW_TASK
-？？  与"singleTask"启动模式的作用一样。（试验：FLAG_ACTIVITY_NEW_TASK并不像官方文档所说的等同与singleTask） 　　
+？?？  与"singleTask"启动模式的作用一样。（试验：FLAG_ACTIVITY_NEW_TASK并不像官方文档所说的等同与singleTask） 　　
 FLAG_ACTIVITY_SINGLE_TOP
 与"singleTop"启动模式的作用一样。
 FLAG_ACTIVITY_CLEAR_TOP
 ？？ 这个标识的意思比较特殊。它不对应于我们上面所说的启动模式中的任何一种 相当于
 it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
+??? 如果已经启动了四个Activity：A，B，C和D，在D Activity里，想再启动一个Actvity B，但不变成A,B,C,D,B，而是希望是A,C,D,B，则可以像下面写代码
 
 1. standard  标准模式:默认模式。
 2. singleTop  栈顶复用模式：如果已经在Task顶部，复用时onPause, 然后onNewIntent唤起, 走onResume流程. 否则都要创建新的实例。场景：搜索跳结果，结果也同样有搜索框能继续搜索。新闻多条推送打开web内容页。聊天的对话窗口。
